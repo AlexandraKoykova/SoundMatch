@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}SoundMatch{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="{% url 'artists:artist_list' %}" class="logo">
+        SOUND<span>MATCH</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="{% url 'artists:artist_list' %}">Artists</a>
+        <a href="{% url 'genres:genre_list' %}">Genres</a>
+        <a href="{% url 'bookings:booking_list' %}">Bookings</a>
+        <a href="{% url 'reviews:review_list' %}">Reviews</a>
+    </nav>
+
+    <a href="{% url 'bookings:booking_add' %}" class="btn btn-primary">
+        Book an Artist
+    </a>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="footer-logo">
+        SOUND<span>MATCH</span>
+    </div>
+
+    <p>Connecting artists with unforgettable events.</p>
+    <p>&copy; {% now "Y" %} SoundMatch. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

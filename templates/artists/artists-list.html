@@ -1,0 +1,102 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Artists | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="artists-section">
+
+    <div class="section-header">
+        <span class="section-label">DISCOVER TALENT</span>
+
+        <h1>Explore Our <span>Artists</span></h1>
+
+        <p>
+            Find the perfect performer for your
+            next unforgettable event.
+        </p>
+    </div>
+
+    <div class="artists-grid">
+
+        {% for artist in artists %}
+
+            <div class="artist-card">
+
+                <div class="artist-image">
+                    {% if artist.profile_image %}
+                        <img
+                            src="{{ artist.profile_image.url }}"
+                            alt="{{ artist.stage_name }}"
+                        >
+                    {% else %}
+                        <div class="no-image">🎤</div>
+                    {% endif %}
+                </div>
+
+                <div class="artist-info">
+
+                    <h2>{{ artist.stage_name }}</h2>
+
+                    <p class="artist-city">
+                        📍 {{ artist.city }}
+                    </p>
+
+                    <div class="artist-genres">
+                        {% for genre in artist.genres.all %}
+                            <span class="genre-tag">
+                                {{ genre.name }}
+                            </span>
+                        {% empty %}
+                            <span class="genre-tag">
+                                No genres
+                            </span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="artist-bottom">
+
+                        <div class="artist-price">
+                            <small>Booking Price</small>
+                            <strong>
+                                €{{ artist.booking_price }}
+                            </strong>
+                        </div>
+
+                        <a
+                            href="{% url 'artists:artist_detail' artist.pk %}"
+                            class="btn btn-primary"
+                        >
+                            View Profile
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <div class="empty-state">
+                <h2>No artists available yet.</h2>
+                <p>Be the first to join SoundMatch!</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="artists-actions">
+        <a
+            href="{% url 'artists:artist_add' %}"
+            class="btn btn-primary"
+        >
+            + Add New Artist
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}

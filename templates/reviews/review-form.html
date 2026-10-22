@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Review | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+        <span class="section-label">SHARE YOUR EXPERIENCE</span>
+        <h1>Leave a <span>Review</span></h1>
+        <p>Tell us about your experience with an artist.</p>
+    </div>
+
+    <div class="form-card">
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small class="help-text">
+                            {{ field.help_text }}
+                        </small>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <p class="field-error">{{ error }}</p>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Submit Review
+                </button>
+
+                <a href="{% url 'reviews:review_list' %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

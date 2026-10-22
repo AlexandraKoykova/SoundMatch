@@ -6,7 +6,7 @@ from .forms import ReviewForm
 
 class ReviewListView(ListView):
     model = Review
-    template_name = 'reviews/review_list.html'
+    template_name = 'reviews/reviews-list.html'
     context_object_name = 'reviews'
     ordering = ['-created_at']
 
@@ -18,7 +18,7 @@ class ReviewDetailView(DetailView):
 class ReviewCreateView(CreateView):
     model = Review
     form_class = ReviewForm
-    template_name = 'reviews/review_form.html'
+    template_name = 'reviews/review-form.html'
     success_url = reverse_lazy('reviews:review_list')
 
 

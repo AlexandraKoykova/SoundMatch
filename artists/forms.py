@@ -21,7 +21,7 @@ class ArtistForm(forms.ModelForm):
             'bio': 'Biography',
             'city': 'City',
             'booking_price': 'Booking Price (€)',
-            'profile_image': 'Profile Image URL',
+            'profile_image': 'Profile Image',
             'genres': 'Music Genres',
             'is_available': 'Available for Bookings',
         }
@@ -43,9 +43,8 @@ class ArtistForm(forms.ModelForm):
                 'placeholder': 'Enter booking price',
                 'min': 0,
             }),
-            'profile_image': forms.URLInput(attrs={
-                'placeholder': 'https://example.com/image.jpg',
-            }),
+            'profile_image': forms.ClearableFileInput(),
+
             'genres': forms.CheckboxSelectMultiple(),
         }
         help_texts = {

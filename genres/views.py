@@ -5,7 +5,7 @@ from .forms import GenreForm
 
 class GenreListView(ListView):
     model = Genre
-    template_name = 'genres/genre_list.html'
+    template_name = 'genres/genre-list.html'
     context_object_name = 'genres'
     ordering = ['name']
 
@@ -17,7 +17,7 @@ class GenreDetailView(DetailView):
 class GenreCreateView(CreateView):
     model = Genre
     form_class = GenreForm
-    template_name = 'genres/genre_form.html'
+    template_name = 'genres/genre-form.html'
     success_url = reverse_lazy('genres:genre_list')
 
 

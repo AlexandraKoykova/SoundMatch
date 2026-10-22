@@ -18,9 +18,12 @@ class Artist(models.Model):
         max_digits=8,
         decimal_places=2,
     )
-    profile_image = models.URLField(
+    profile_image = models.ImageField(
+        upload_to='artists/',
         blank=True,
+        null=True
     )
+
     genres = models.ManyToManyField(
         'genres.Genre',
         related_name='artists',

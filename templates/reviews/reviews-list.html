@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Reviews | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="artists-section">
+
+    <div class="section-header">
+        <span class="section-label">COMMUNITY FEEDBACK</span>
+        <h1>Artist <span>Reviews</span></h1>
+        <p>See what people are saying about our artists.</p>
+    </div>
+
+    <div class="artists-grid">
+
+        {% for review in reviews %}
+
+            <div class="artist-card">
+                <div class="artist-info">
+
+                    <h2>{{ review.artist.stage_name }}</h2>
+
+                    <p class="artist-city">
+                        Reviewed by {{ review.reviewer_name }}
+                    </p>
+
+                    <p class="genre-tag">
+                        ⭐ {{ review.rating }}/5
+                    </p>
+
+                    <p>{{ review.comment }}</p>
+
+                    <div class="artist-bottom">
+                        <a href="{% url 'reviews:review_detail' review.pk %}"
+                           class="btn btn-primary">
+                            Read Review
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        {% empty %}
+
+            <div class="empty-state">
+                <h2>No reviews yet.</h2>
+                <p>Be the first to leave a review!</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="artists-actions">
+        <a href="{% url 'reviews:review_add' %}"
+           class="btn btn-primary">
+            + Add Review
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}

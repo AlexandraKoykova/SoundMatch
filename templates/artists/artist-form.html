@@ -1,0 +1,118 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        Edit Artist | SoundMatch
+    {% else %}
+        Add Artist | SoundMatch
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+
+        <span class="section-label">
+            JOIN THE STAGE
+        </span>
+
+        <h1>
+            {% if object %}
+                Edit <span>Artist</span>
+            {% else %}
+                Add New <span>Artist</span>
+            {% endif %}
+        </h1>
+
+        <p>
+            Bring your talent to the SoundMatch stage.
+        </p>
+
+    </div>
+
+    <div class="form-card">
+
+        <form
+            method="post"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+            {% for field in form %}
+
+                <div class="form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small class="help-text">
+                            {{ field.help_text }}
+                        </small>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <p class="field-error">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <p class="field-error">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {% if object and object.profile_image %}
+                <div class="current-image">
+
+                    <p>Current Profile Image</p>
+
+                    <img
+                        src="{{ object.profile_image.url }}"
+                        alt="{{ object.stage_name }}"
+                    >
+
+                </div>
+            {% endif %}
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    {% if object %}
+                        Save Changes
+                    {% else %}
+                        Create Artist
+                    {% endif %}
+                </button>
+
+                <a
+                    href="{% url 'artists:artist_list' %}"
+                    class="btn btn-secondary"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

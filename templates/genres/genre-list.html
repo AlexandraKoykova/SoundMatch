@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Genres | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="artists-section">
+
+    <div class="section-header">
+        <span class="section-label">EXPLORE MUSIC</span>
+        <h1>Music <span>Genres</span></h1>
+        <p>Discover the different sounds of SoundMatch.</p>
+    </div>
+
+    <div class="artists-grid">
+
+        {% for genre in genres %}
+
+            <div class="artist-card">
+                <div class="artist-info">
+
+                    <h2>{{ genre.name }}</h2>
+
+                    <p class="artist-city">
+                        {{ genre.description|default:"Discover this music genre." }}
+                    </p>
+
+                    <a href="{% url 'genres:genre_detail' genre.pk %}"
+                       class="btn btn-primary">
+                        View Genre
+                    </a>
+
+                </div>
+            </div>
+
+        {% empty %}
+
+            <div class="empty-state">
+                <h2>No genres available yet.</h2>
+                <p>Add your first music genre!</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="artists-actions">
+        <a href="{% url 'genres:genre_add' %}"
+           class="btn btn-primary">
+            + Add New Genre
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}

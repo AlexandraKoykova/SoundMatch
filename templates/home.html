@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Find Your Next Headliner.</h1>
+
+    <p>
+        Discover exceptional artists.
+        Create unforgettable events.
+    </p>
+
+    <a href="{% url 'artists:artist_list' %}"
+       class="btn btn-primary">
+        Explore Artists
+    </a>
+</section>
+
+{% endblock %}
