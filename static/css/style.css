@@ -1069,3 +1069,119 @@ main:has(.home-hero) {
     cursor: pointer;
     flex-shrink: 0;
 }
+
+/* ARTIST FILTERS */
+
+.artist-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+    max-width: 1200px;
+    margin: 35px auto 45px;
+    padding: 25px;
+    background: #15152b;
+    border: 1px solid #35304e;
+    border-radius: 18px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 180px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #c7b8dd;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 13px 15px;
+    background: #0b0b17;
+    border: 1px solid #39334e;
+    border-radius: 9px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #a855f7;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-actions .btn {
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.filter-actions button {
+    border: none;
+}
+
+@media (max-width: 650px) {
+    .artist-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+    }
+}
+
+/* CUSTOM 404 PAGE */
+
+.error-page {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.error-page h1 {
+    font-size: clamp(100px, 18vw, 180px);
+    font-weight: 900;
+    line-height: 1;
+    margin: 20px 0;
+    color: #fff;
+}
+
+.error-page h1 span {
+    color: #a855f7;
+}
+
+.error-page h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.error-page p {
+    color: #aaa5bd;
+    max-width: 450px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}

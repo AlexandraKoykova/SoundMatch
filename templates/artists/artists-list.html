@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load artist_filters %}
 
 {% block title %}Artists | SoundMatch{% endblock %}
 
@@ -18,6 +19,97 @@
         </p>
     </div>
 
+    <!-- ARTIST FILTERS -->
+
+    <form method="get" class="artist-filters">
+
+        <div class="filter-group">
+            <label for="search">Search Artist</label>
+
+            <input
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Search by name..."
+                value="{{ selected_search }}"
+            >
+        </div>
+
+        <div class="filter-group">
+            <label for="genre">Music Genre</label>
+
+            <select name="genre" id="genre">
+                <option value="">All Genres</option>
+
+                {% for genre in genres %}
+                    <option
+                        value="{{ genre.pk }}"
+                        {% if selected_genre == genre.pk|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+                        {{ genre.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="sort">Sort By</label>
+
+            <select name="sort" id="sort">
+
+                <option value="">Newest First</option>
+
+                <option
+                    value="price_asc"
+                    {% if selected_sort == 'price_asc' %}
+                        selected
+                    {% endif %}
+                >
+                    Price: Low to High
+                </option>
+
+                <option
+                    value="price_desc"
+                    {% if selected_sort == 'price_desc' %}
+                        selected
+                    {% endif %}
+                >
+                    Price: High to Low
+                </option>
+
+                <option
+                    value="name"
+                    {% if selected_sort == 'name' %}
+                        selected
+                    {% endif %}
+                >
+                    Name: A to Z
+                </option>
+
+            </select>
+        </div>
+
+        <div class="filter-actions">
+
+            <button type="submit" class="btn btn-primary">
+                Apply Filters
+            </button>
+
+            <a
+                href="{% url 'artists:artist_list' %}"
+                class="btn btn-secondary"
+            >
+                Reset
+            </a>
+
+        </div>
+
+    </form>
+
+    <!-- ARTISTS GRID -->
+
     <div class="artists-grid">
 
         {% for artist in artists %}
@@ -25,14 +117,20 @@
             <div class="artist-card">
 
                 <div class="artist-image">
+
                     {% if artist.profile_image %}
+
                         <img
                             src="{{ artist.profile_image.url }}"
                             alt="{{ artist.stage_name }}"
                         >
+
                     {% else %}
+
                         <div class="no-image">🎤</div>
+
                     {% endif %}
+
                 </div>
 
                 <div class="artist-info">
@@ -44,23 +142,30 @@
                     </p>
 
                     <div class="artist-genres">
+
                         {% for genre in artist.genres.all %}
+
                             <span class="genre-tag">
                                 {{ genre.name }}
                             </span>
+
                         {% empty %}
+
                             <span class="genre-tag">
                                 No genres
                             </span>
+
                         {% endfor %}
+
                     </div>
 
                     <div class="artist-bottom">
 
                         <div class="artist-price">
                             <small>Booking Price</small>
+
                             <strong>
-                                €{{ artist.booking_price }}
+                                {{ artist.booking_price|euro_price }}
                             </strong>
                         </div>
 
@@ -80,21 +185,37 @@
         {% empty %}
 
             <div class="empty-state">
-                <h2>No artists available yet.</h2>
-                <p>Be the first to join SoundMatch!</p>
+
+                <h2>No artists found.</h2>
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+                <a
+                    href="{% url 'artists:artist_list' %}"
+                    class="btn btn-secondary"
+                >
+                    Clear Filters
+                </a>
+
             </div>
 
         {% endfor %}
 
     </div>
 
+
+
     <div class="artists-actions">
+
         <a
             href="{% url 'artists:artist_add' %}"
             class="btn btn-primary"
         >
             + Add New Artist
         </a>
+
     </div>
 
 </section>
