@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ genre.name }} | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="artists-section">
+
+    <div class="section-header">
+        <span class="section-label">EXPLORE MUSIC</span>
+
+        <h1>{{ genre.name }} <span>Music</span></h1>
+
+        <p>
+            {{ genre.description|default:"Discover artists performing this music genre." }}
+        </p>
+    </div>
+
+    <div class="artists-actions">
+        <a href="{% url 'genres:genre_list' %}"
+           class="btn btn-secondary">
+            ← Back to Genres
+        </a>
+    </div>
+
+    <div class="section-header">
+        <h2>Artists in <span>{{ genre.name }}</span></h2>
+    </div>
+
+    <div class="artists-grid">
+
+        {% for artist in artists %}
+
+            <div class="artist-card">
+
+                <div class="artist-image">
+                    {% if artist.profile_image %}
+                        <img src="{{ artist.profile_image.url }}"
+                             alt="{{ artist.stage_name }}">
+                    {% else %}
+                        <div class="no-image">🎤</div>
+                    {% endif %}
+                </div>
+
+                <div class="artist-info">
+
+                    <h2>{{ artist.stage_name }}</h2>
+
+                    <p class="artist-city">
+                        📍 {{ artist.city }}
+                    </p>
+
+                    <div class="artist-bottom">
+
+                        <div class="artist-price">
+                            <small>Booking Price</small>
+                            <strong>€{{ artist.booking_price }}</strong>
+                        </div>
+
+                        <a href="{% url 'artists:artist_detail' artist.pk %}"
+                           class="btn btn-primary">
+                            View Profile
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <div class="empty-state">
+                <h2>No artists in this genre yet.</h2>
+                <p>Explore other music genres!</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

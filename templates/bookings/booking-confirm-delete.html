@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Delete Booking | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+        <span class="section-label">BOOKING MANAGEMENT</span>
+        <h1>Delete <span>Booking</span></h1>
+        <p>This action cannot be undone.</p>
+    </div>
+
+    <div class="form-card">
+
+        <h2>Are you sure?</h2>
+
+        <p>
+            You are about to delete the booking for
+            <strong>{{ booking.artist.stage_name }}</strong>
+            on {{ booking.event_date|date:"d M Y" }}.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">
+                    Yes, Delete Booking
+                </button>
+
+                <a href="{% url 'bookings:booking_detail' booking.pk %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

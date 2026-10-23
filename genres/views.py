@@ -11,8 +11,15 @@ class GenreListView(ListView):
 
 class GenreDetailView(DetailView):
     model = Genre
-    template_name = 'genres/genre_detail.html'
+    template_name = 'genres/genre-detail.html'
     context_object_name = 'genre'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['artists'] = self.object.artists.all()
+
+        return context
 
 class GenreCreateView(CreateView):
     model = Genre

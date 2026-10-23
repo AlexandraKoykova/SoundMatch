@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Review Details | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+        <span class="section-label">ARTIST FEEDBACK</span>
+
+        <h1>Review <span>Details</span></h1>
+
+        <p>Read the full experience shared by our community.</p>
+    </div>
+
+    <div class="booking-detail-card">
+
+        <div class="booking-detail-header">
+            <div>
+                <span class="section-label">REVIEW FOR</span>
+                <h2>{{ review.artist.stage_name }}</h2>
+            </div>
+
+            <div class="review-rating">
+                {% if review.rating == 5 %}
+                    ★★★★★
+                {% elif review.rating == 4 %}
+                    ★★★★☆
+                {% elif review.rating == 3 %}
+                    ★★★☆☆
+                {% elif review.rating == 2 %}
+                    ★★☆☆☆
+                {% elif review.rating == 1 %}
+                    ★☆☆☆☆
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="booking-detail-grid">
+
+            <div class="booking-detail-item">
+                <span>Reviewed By</span>
+                <strong>{{ review.reviewer_name }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Date</span>
+                <strong>{{ review.created_at|date:"d M Y" }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Rating</span>
+                <strong>{{ review.rating }} / 5</strong>
+            </div>
+
+        </div>
+
+        <div class="booking-message">
+            <h3>Full Review</h3>
+            <p>{{ review.comment }}</p>
+        </div>
+
+        <div class="booking-detail-footer">
+
+            <a href="{% url 'artists:artist_detail' review.artist.pk %}"
+               class="btn btn-primary">
+                View Artist
+            </a>
+
+            <a href="{% url 'reviews:review_list' %}"
+               class="btn btn-secondary">
+                Back to Reviews
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

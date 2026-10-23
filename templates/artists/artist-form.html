@@ -35,22 +35,25 @@
 
     <div class="form-card">
 
-        <form
-            method="post"
-            enctype="multipart/form-data"
-        >
+        <form method="post" enctype="multipart/form-data">
 
             {% csrf_token %}
 
             {% for field in form %}
 
-                <div class="form-group">
+                {% if field.name == 'is_available' %}
 
-                    <label for="{{ field.id_for_label }}">
-                        {{ field.label }}
-                    </label>
+                    <!-- AVAILABILITY CHECKBOX -->
 
-                    {{ field }}
+                    <div class="availability-field">
+
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                    </div>
 
                     {% if field.help_text %}
                         <small class="help-text">
@@ -64,9 +67,37 @@
                         </p>
                     {% endfor %}
 
-                </div>
+                {% else %}
+
+                    <!-- REGULAR FORM FIELDS -->
+
+                    <div class="form-group">
+
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                        {% if field.help_text %}
+                            <small class="help-text">
+                                {{ field.help_text }}
+                            </small>
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                            <p class="field-error">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
 
             {% endfor %}
+
+            <!-- NON-FIELD ERRORS -->
 
             {% for error in form.non_field_errors %}
                 <p class="field-error">
@@ -74,7 +105,10 @@
                 </p>
             {% endfor %}
 
+            <!-- CURRENT PROFILE IMAGE -->
+
             {% if object and object.profile_image %}
+
                 <div class="current-image">
 
                     <p>Current Profile Image</p>
@@ -85,7 +119,10 @@
                     >
 
                 </div>
+
             {% endif %}
+
+            <!-- FORM BUTTONS -->
 
             <div class="form-actions">
 

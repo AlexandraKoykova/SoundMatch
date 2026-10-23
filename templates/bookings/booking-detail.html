@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Booking Details | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+        <span class="section-label">BOOKING MANAGEMENT</span>
+
+        <h1>Booking <span>Details</span></h1>
+
+        <p>View and manage your booking information.</p>
+    </div>
+
+    <div class="booking-detail-card">
+
+        <div class="booking-detail-header">
+
+            <div>
+                <span class="section-label">BOOKED ARTIST</span>
+                <h2>{{ booking.artist.stage_name }}</h2>
+            </div>
+
+            <span class="booking-status status-{{ booking.status }}">
+                {{ booking.get_status_display }}
+            </span>
+
+        </div>
+
+        <div class="booking-detail-grid">
+
+            <div class="booking-detail-item">
+                <span>Client Name</span>
+                <strong>{{ booking.client_name }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Email Address</span>
+                <strong>{{ booking.client_email }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Phone Number</span>
+                <strong>{{ booking.client_phone }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Event Date</span>
+                <strong>{{ booking.event_date|date:"d M Y" }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Event Location</span>
+                <strong>{{ booking.event_location }}</strong>
+            </div>
+
+            <div class="booking-detail-item">
+                <span>Event Type</span>
+                <strong>{{ booking.get_event_type_display }}</strong>
+            </div>
+
+        </div>
+
+        <div class="booking-message">
+            <h3>Additional Information</h3>
+
+            <p>
+                {{ booking.message|default:"No additional information provided." }}
+            </p>
+        </div>
+
+        <div class="booking-detail-footer">
+
+            <a href="{% url 'bookings:booking_edit' booking.pk %}"
+               class="btn btn-primary">
+                Edit Booking
+            </a>
+
+            <a href="{% url 'bookings:booking_delete' booking.pk %}"
+               class="btn btn-danger">
+                Delete Booking
+            </a>
+
+            <a href="{% url 'bookings:booking_list' %}"
+               class="btn btn-secondary">
+                Back to Bookings
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,99 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Bookings | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="artists-section">
+
+    <div class="section-header">
+        <span class="section-label">EVENT MANAGEMENT</span>
+
+        <h1>Artist <span>Bookings</span></h1>
+
+        <p>Manage your events and booking requests.</p>
+    </div>
+
+    <div class="artists-actions">
+        <a href="{% url 'bookings:booking_add' %}"
+           class="btn btn-primary">
+            + New Booking
+        </a>
+    </div>
+
+    <div class="bookings-grid">
+
+        {% for booking in bookings %}
+
+            <div class="booking-card">
+
+                <div class="booking-card-header">
+
+                    <h2>{{ booking.artist.stage_name }}</h2>
+
+                    <span class="booking-status status-{{ booking.status }}">
+                        {{ booking.get_status_display }}
+                    </span>
+
+                </div>
+
+                <div class="booking-details">
+
+                    <p>
+                        <strong>Client:</strong>
+                        {{ booking.client_name }}
+                    </p>
+
+                    <p>
+                        <strong>Event:</strong>
+                        {{ booking.get_event_type_display }}
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        {{ booking.event_date|date:"d M Y" }}
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        {{ booking.event_location }}
+                    </p>
+
+                </div>
+
+                <div class="booking-actions">
+
+                    <a href="{% url 'bookings:booking_detail' booking.pk %}"
+                       class="btn btn-secondary">
+                        View Details
+                    </a>
+
+                    <a href="{% url 'bookings:booking_edit' booking.pk %}"
+                       class="btn btn-primary">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'bookings:booking_delete' booking.pk %}"
+                       class="btn btn-danger">
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <div class="empty-state">
+                <h2>No bookings yet.</h2>
+                <p>Start by booking your first artist!</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

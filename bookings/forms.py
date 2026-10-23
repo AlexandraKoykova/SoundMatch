@@ -38,8 +38,11 @@ class BookingForm(forms.ModelForm):
                 'placeholder': '+359...',
             }),
             'event_date': forms.DateInput(attrs={
-                'type': 'date',
-            }),
+             'type': 'date',
+             'class': 'date-input',
+             },
+             format='%Y-%m-%d',
+            ),
             'event_location': forms.TextInput(attrs={
                 'placeholder': 'e.g. Sofia',
             }),

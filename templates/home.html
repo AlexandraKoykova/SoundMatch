@@ -1,21 +1,171 @@
+
 {% extends 'base.html' %}
 
 {% block title %}Home | SoundMatch{% endblock %}
 
 {% block content %}
 
-<section class="hero">
-    <h1>Find Your Next Headliner.</h1>
+<!-- HERO -->
+<section class="home-hero">
+
+    <div class="home-hero-glow"></div>
+
+    <div class="home-hero-content">
+
+        <span class="home-eyebrow">
+            THE STAGE IS YOURS
+        </span>
+
+        <h1>
+            YOUR EVENT.<br>
+            YOUR SOUND.<br>
+            <span>YOUR HEADLINER.</span>
+        </h1>
+
+        <p>
+            From intimate celebrations to unforgettable
+            live experiences. Discover exceptional artists
+            and bring your event to life.
+        </p>
+
+        <div class="home-hero-buttons">
+
+            <a href="{% url 'artists:artist_list' %}"
+               class="btn btn-primary">
+                Explore Artists →
+            </a>
+
+            <a href="{% url 'bookings:booking_add' %}"
+               class="btn btn-secondary">
+                Book an Artist
+            </a>
+
+        </div>
+
+        <div class="home-hero-bottom">
+            <span>LIVE MUSIC</span>
+            <span>UNFORGETTABLE EVENTS</span>
+            <span>REAL CONNECTIONS</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="home-section">
+
+    <div class="home-section-heading">
+
+        <span class="home-eyebrow">SIMPLE. SEAMLESS. SOUND.</span>
+
+        <h2>How It <span>Works</span></h2>
+
+        <p>
+            Your perfect event is just three steps away.
+        </p>
+
+    </div>
+
+    <div class="home-steps">
+
+        <div class="home-step">
+            <span class="home-step-number">01</span>
+            <div class="home-step-icon">♫</div>
+            <h3>Discover</h3>
+            <p>
+                Explore talented performers and find
+                the perfect sound for your event.
+            </p>
+        </div>
+
+        <div class="home-step">
+            <span class="home-step-number">02</span>
+            <div class="home-step-icon">✦</div>
+            <h3>Choose</h3>
+            <p>
+                Browse artist profiles, music genres,
+                booking prices and reviews.
+            </p>
+        </div>
+
+        <div class="home-step">
+            <span class="home-step-number">03</span>
+            <div class="home-step-icon">★</div>
+            <h3>Book</h3>
+            <p>
+                Send your booking request and
+                get ready for an unforgettable experience.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DISCOVER -->
+<section class="home-discover">
+
+    <div class="home-discover-content">
+
+        <span class="home-eyebrow">
+            FIND YOUR PERFECT MATCH
+        </span>
+
+        <h2>
+            Every Event<br>
+            Deserves a <span>Soundtrack.</span>
+        </h2>
+
+        <p>
+            Whether you're planning a wedding,
+            private celebration or corporate event,
+            SoundMatch helps you discover the
+            performers who make moments memorable.
+        </p>
+
+        <a href="{% url 'genres:genre_list' %}"
+           class="btn btn-primary">
+            Explore Music Genres →
+        </a>
+
+    </div>
+
+    <div class="home-discover-visual">
+        <div class="home-vinyl">
+            <div class="home-vinyl-label">
+                <span>SOUND</span>
+                <span>MATCH</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+<section class="home-cta">
+
+    <span class="home-eyebrow">
+        LET'S MAKE IT UNFORGETTABLE
+    </span>
+
+    <h2>
+        The Perfect Artist.<br>
+        <span>The Perfect Night.</span>
+    </h2>
 
     <p>
-        Discover exceptional artists.
-        Create unforgettable events.
+        Your next unforgettable experience starts here.
     </p>
 
     <a href="{% url 'artists:artist_list' %}"
        class="btn btn-primary">
-        Explore Artists
+        Find Your Artist →
     </a>
+
 </section>
 
 {% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Delete Artist | SoundMatch{% endblock %}
+
+{% block content %}
+
+<section class="form-section">
+
+    <div class="form-header">
+        <span class="section-label">ARTIST MANAGEMENT</span>
+        <h1>Delete <span>Artist</span></h1>
+        <p>This action cannot be undone.</p>
+    </div>
+
+    <div class="form-card">
+
+        <h2>Are you sure?</h2>
+
+        <p>
+            You are about to permanently delete
+            <strong>{{ artist.stage_name }}</strong>
+            from SoundMatch.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-actions">
+
+                <button type="submit" class="btn btn-danger">
+                    Yes, Delete Artist
+                </button>
+
+                <a href="{% url 'artists:artist_detail' artist.pk %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}
