@@ -1,0 +1,104 @@
+[
+{
+  "model": "artists.artist",
+  "pk": 1,
+  "fields": {
+    "stage_name": "Lubo Kirov",
+    "real_name": "",
+    "bio": "Lubomir Tsvetanov Kirov is a Bulgarian pop singer and music producer. He was formerly the lead singer of the band Te and was a member of the jury in the second and third season of music show X Factor.",
+    "city": "Sofia",
+    "booking_price": "9000.00",
+    "profile_image": "artists/518354244_10165647906061521_5133475746954408436_n.jpg",
+    "is_available": true,
+    "created_at": "2026-10-22T11:21:02.103Z",
+    "genres": [
+      1
+    ]
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 2,
+  "fields": {
+    "stage_name": "DARA",
+    "real_name": "",
+    "bio": "In 2026, she won the Eurovision Song Contest for Bulgaria with the song \"Bangaranga\", giving her country its first ever win in the competition since the country's debut in 2005. The song won both the jury vote and televote in the contest.",
+    "city": "Sofia",
+    "booking_price": "20000.00",
+    "profile_image": "artists/624570981_122144771102987497_8248039660887439844_n.jpeg",
+    "is_available": true,
+    "created_at": "2026-10-23T09:29:46.627Z",
+    "genres": [
+      1
+    ]
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 3,
+  "fields": {
+    "stage_name": "Krisko",
+    "real_name": "",
+    "bio": "risko started to write his own songs in 2005, being part of a neighborhood group. Later he started studying sound engineering and in 2008 he worked as a sound engineer in Radio 1 Bulgaria. From 2009 to 2010 he was briefly signed to Bulgarian rapper Spens's CCCP (Sam Sam Si Records) label as a producer and performer. Together they recorded the song Neka Sam Sam and in 2010 he made his breakthrough with the single Ludo Noshti featuring Bulgarian Eurovision performer Elitsa Todorova.",
+    "city": "Plovdiv",
+    "booking_price": "7000.00",
+    "profile_image": "artists/krisko.jpg",
+    "is_available": true,
+    "created_at": "2026-10-23T09:32:07.921Z",
+    "genres": [
+      2
+    ]
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 4,
+  "fields": {
+    "stage_name": "Grafa",
+    "real_name": "",
+    "bio": "Vladimir Kirilov Ampov (Bulgarian: Владимир Кирилов Ампов) (born July 21, 1978[1]), known by his stage name Grafa (Графа), is a prolific Bulgarian pop singer, composer, and music producer.\r\n\r\nFor a number of years he was a coach at the Bulgarian reality singing competition Glasat na Bulgaria.\r\n\r\nFor many years he was a recipient of multiple \"Song of the Year\"/\"Singer of the Year\" and the like awards and released many albums.\r\n\r\nIn 2012 he was number 3 on the celebrities list of the Forbes Bulgaria magazine",
+    "city": "Varna",
+    "booking_price": "6000.00",
+    "profile_image": "artists/grafa-11.jpg",
+    "is_available": true,
+    "created_at": "2026-10-23T09:35:48.836Z",
+    "genres": [
+      1
+    ]
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 5,
+  "fields": {
+    "stage_name": "Medi",
+    "real_name": "",
+    "bio": "Bulgarian pop-folk singer, musician, and producer. He is predominantly known for his blend of contemporary pop, trap, and traditional chalga elements. He is one of the leading figures in Bulgarian mainstream pop-folk music.",
+    "city": "Sofia",
+    "booking_price": "8000.00",
+    "profile_image": "artists/650736490_18517274254075537_7285766180578096490_n.jpg",
+    "is_available": true,
+    "created_at": "2026-10-23T09:39:00.909Z",
+    "genres": [
+      3
+    ]
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 6,
+  "fields": {
+    "stage_name": "Maria Ilieva",
+    "real_name": "",
+    "bio": "Bulgarian singer, songwriter and producer. She is recognized as one of the most successful female vocal artists of the contemporary Bulgarian music scene. In the last over 20 years of active solo career, she has released over 30 hit singles, two award-winning studio albums, a maxi single and a greatest hits album. She has received over 40 awards for music and style.",
+    "city": "Sofia",
+    "booking_price": "5000.00",
+    "profile_image": "artists/4e8050c6685997e52e4fe4a86b2b276c.jpg",
+    "is_available": true,
+    "created_at": "2026-10-23T09:42:42.977Z",
+    "genres": [
+      1
+    ]
+  }
+}
+]
